@@ -1,0 +1,23 @@
+.modal * {
+    border-radius: 0px;
+}
+.modal-header {
+    padding : 1rem 6rem;
+    width : 100%;
+    border-bottom-width : 2px;
+    position : relative;
+    left: -20px;
+}
+
+.modal-body {
+    padding : 1.5rem 3rem;
+    /* border-bottom-width : 2px; */
+}
+
+.modal-footer {
+    padding : 1.5rem 3.5rem;
+    width : 100%;
+    border-top-width : 0px;
+    /* position : relative;
+    right: 2rem; */
+}

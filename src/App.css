@@ -36,27 +36,21 @@ footer {
   color: var(--color-alpine);
 }
 
-button{
+/* button{
     color : var(--txt-light);
     background-color : var(--bg-dark);
     font-size: 1.25rem;
     padding: 1rem;
     margin: 1px;
-    /* text-transform: none; */
-    /* display: inline-block; */
-    /* transition: .5s,color .5s; */
     font-weight: 200;
-    /* text-decoration: none; */
     cursor: pointer;
     border: 0;
-    /* background: none; */
-    /* font-family: inherit; */
     border-radius: 0;
-}
+} */
 
-button div {
+/* button div {
     transform: skew(18deg);
-}
+} */
 
 .skew {
     transform: skew(-18deg);

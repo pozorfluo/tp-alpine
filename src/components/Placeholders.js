@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import configMachine from '../machines/Configurator';
 import { Link } from 'react-router-dom';
 import catalog from '../config/catalog';
-import {ConfigSummary} from './';
+import {ConfigSummary, NextButton} from './';
 
 function listItems(catalog, event) {
   return catalog.map((item, key) => {
     return (
-      <button
+      <NextButton
         key={key}
         onClick={() => {
           console.log(item);
@@ -16,7 +16,7 @@ function listItems(catalog, event) {
         }}
       >
         {item.desc} {item.price} €
-      </button>
+      </NextButton>
     );
   });
 }

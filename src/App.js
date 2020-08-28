@@ -19,60 +19,6 @@ function App() {
   return (
     <div className="App">
       <Breadcrumbs />
-      <div>
-        <hr />
-        <button
-          className="skew"
-          onClick={() => {
-            configMachine.send('select');
-          }}
-        >
-          <div className="unskew">select</div>
-        </button>
-        <button
-          className="skew"
-          onClick={() => {
-            configMachine.send('next');
-          }}
-        >
-          <div className="unskew">next</div>
-        </button>
-        <button
-          className="skew"
-          onClick={() => {
-            configMachine.send('submit');
-          }}
-        >
-          <div className="unskew">submit</div>
-        </button>
-        <button
-          className="skew"
-          onClick={() => {
-            configMachine.send('reset');
-          }}
-        >
-          <div className="unskew">reset</div>
-        </button>
-        <button
-          className="skew"
-          onClick={() => {
-            configMachine.send('confirm');
-          }}
-        >
-          <div className="unskew">confirm</div>
-        </button>
-        <button
-          className="skew"
-          onClick={() => {
-            configMachine.send('cancel');
-          }}
-        >
-          <div className="unskew">cancel</div>
-        </button>
-      </div>
-      <hr />
-      <ConfigSummary />
-
       <NextButton
         onClick={() => {
           configMachine.send('reset');
@@ -81,6 +27,9 @@ function App() {
       >
         recommencer
       </NextButton>
+      <hr />
+      <ConfigSummary />
+
       <ConfigModal
         show={cancelShow}
         title="ÊTES-VOUS SÛR ?"
@@ -104,3 +53,55 @@ function App() {
 }
 
 export default App;
+
+  /* <div>
+<hr />
+<button
+  className="skew"
+  onClick={() => {
+    configMachine.send('select');
+  }}
+>
+  <div className="unskew">select</div>
+</button>
+<button
+  className="skew"
+  onClick={() => {
+    configMachine.send('next');
+  }}
+>
+  <div className="unskew">next</div>
+</button>
+<button
+  className="skew"
+  onClick={() => {
+    configMachine.send('submit');
+  }}
+>
+  <div className="unskew">submit</div>
+</button>
+<button
+  className="skew"
+  onClick={() => {
+    configMachine.send('reset');
+  }}
+>
+  <div className="unskew">reset</div>
+</button>
+<button
+  className="skew"
+  onClick={() => {
+    configMachine.send('confirm');
+  }}
+>
+  <div className="unskew">confirm</div>
+</button>
+<button
+  className="skew"
+  onClick={() => {
+    configMachine.send('cancel');
+  }}
+>
+  <div className="unskew">cancel</div>
+</button>
+</div> */
