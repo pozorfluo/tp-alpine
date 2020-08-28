@@ -6,6 +6,7 @@
 
 .breadcrumb{
     background-color: var(--color-dark-trans);
+    border-radius: 0;
     /* background-color: var(--bg-dark); */
 }
 .breadcrumb-item.active{

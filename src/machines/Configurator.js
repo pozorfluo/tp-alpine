@@ -10,30 +10,64 @@ const configMachine = {
   states: {
     version: {
       select(version) {
-        const sequencer = store.getState().settingSequencer;
         store.dispatch({
           type: 'UPDATE_CONFIG',
           config: { version: [version] },
         });
+      },
+      next() {
+        const sequencer = store.getState().settingSequencer;
         store.dispatch({
           type: 'SET_STEP',
           step: sequencer.next('color').value,
         });
         this._current = ['settings'];
       },
+      nav(path) {
+        const context = store.getState();
+        if (context.config.version.length && path !== context.step) {
+          context.settingSequencer.next(path);
+          store.dispatch({
+            type: 'SET_STEP',
+            step: path,
+          });
+          this._current = ['settings'];
+        }
+      },
     },
     settings: {
+      select(item) {
+        const context = store.getState();
+        store.dispatch({
+          type: 'UPDATE_CONFIG',
+          config: { [context.step]: [item] },
+        });
+      },
+      add(item) {
+        const context = store.getState();
+        store.dispatch({
+          type: 'UPDATE_CONFIG',
+          config: { [context.step]: [...context.config[context.step], item] },
+        });
+      },
       next(items) {
         const context = store.getState();
         const sequencer = context.settingSequencer;
-        store.dispatch({
-          type: 'UPDATE_CONFIG',
-          config: { [context.step]: [items] },
-        });
         store.dispatch({ type: 'SET_STEP', step: sequencer.next().value });
 
         if (this.isConfigDone(context.config)) {
           this._current = ['summary'];
+        }
+      },
+      nav(path) {
+        const context = store.getState();
+        const sequencer = context.settingSequencer;
+        if (path !== context.step) {
+          store.dispatch({
+            type: 'SET_STEP',
+            step: sequencer.next(path).value,
+          });
+          this._current = ['settings'];
         }
       },
       reset() {
@@ -54,17 +88,12 @@ const configMachine = {
     },
     reset: {
       confirm() {
-        const sequencer = store.getState().settingSequencer;
-
         store.dispatch({ type: 'RESET_CONFIG' });
         store.dispatch({
           type: 'SET_STEP',
-          step: sequencer.next('color').value,
+          step: 'version',
         });
-        // store.dispatch({
-        //   type: 'REDIRECT',
-        //   to: '/version',
-        // });
+
         this._current = ['version'];
       },
       cancel() {

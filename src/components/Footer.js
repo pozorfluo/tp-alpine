@@ -3,6 +3,8 @@ import { NextButton, ConfigStatus } from './';
 import './Footer.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import configMachine from '../machines/Configurator';
+
 
 export const Footer = (props) => {
   return (
@@ -12,7 +14,9 @@ export const Footer = (props) => {
           <ConfigStatus />
         </Col>
         <Col md="4">
-          <NextButton>suivant</NextButton>
+          <NextButton         onClick={() => {
+          configMachine.send('next');
+        }}>suivant</NextButton>
         </Col>
       </Row>
     </footer>

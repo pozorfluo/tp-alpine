@@ -1,7 +1,7 @@
 // import routes from '../config/routes';
 
 const initialState = {
-  step: 'Version',
+  step: 'version',
   settingSequencer: stepSequencer([
     'color',
     'rims',
