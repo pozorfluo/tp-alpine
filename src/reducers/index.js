@@ -8,6 +8,7 @@ const initialState = {
     'upholstery',
     'equipment',
     'accessories',
+    'summary',
   ]),
   // redirect: null,
   config: {

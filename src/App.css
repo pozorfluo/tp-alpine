@@ -12,8 +12,10 @@
   --bg-dark: var(--color-alpine);
   --bg-dark: var(--color-alpine);
   --bg-light: var(--color-white);
-  /* --color-light-blue: #a38dfc; */
   --footer-height: 6rem;
+  --options-height: 10rem;
+  --header-height: 3rem;
+  --preview-height: calc(80vh - var(--footer-height) - var(--options-height));
 }
 * {
     box-sizing: border-box
@@ -35,22 +37,6 @@ footer {
 .App-link {
   color: var(--color-alpine);
 }
-
-/* button{
-    color : var(--txt-light);
-    background-color : var(--bg-dark);
-    font-size: 1.25rem;
-    padding: 1rem;
-    margin: 1px;
-    font-weight: 200;
-    cursor: pointer;
-    border: 0;
-    border-radius: 0;
-} */
-
-/* button div {
-    transform: skew(18deg);
-} */
 
 .skew {
     transform: skew(-18deg);

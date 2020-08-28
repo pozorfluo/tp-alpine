@@ -10,10 +10,10 @@ import {
   ConfigModal,
 } from './components';
 
-
 function App() {
+  // const step = useSelector((state) => state.step);
   const [cancelShow, setCancelShow] = useState(false);
-
+  // if (step === 'reset') {setCancelShow(true);}
 
   return (
     <div className="App">
@@ -36,17 +36,18 @@ function App() {
           Si vous modifiez le choix de version, vous devrez recommencer votre
           configuration. Vos choix seront perdus.
         </ConfigModal>
+        <ConfigSummary>
+          <NextButton
+            onClick={() => {
+              configMachine.send('reset');
+              setCancelShow(true);
+            }}
+          >
+            recommencer
+          </NextButton>
+        </ConfigSummary>
 
-        <NextButton
-          onClick={() => {
-            configMachine.send('reset');
-            setCancelShow(true);
-          }}
-        >
-          recommencer
-        </NextButton>
         <hr />
-        <ConfigSummary />
       </Breadcrumbs>
       <Footer />
     </div>

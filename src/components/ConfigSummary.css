@@ -1,0 +1,4 @@
+.config-summary{
+    height : var(--preview-height);
+    overflow-y: auto;
+}

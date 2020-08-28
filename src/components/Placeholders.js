@@ -9,6 +9,7 @@ function listItems(catalog, event) {
     return (
       <NextButton
         key={key}
+        className="option-button"
         onClick={() => {
           console.log(item);
           configMachine.send(event, item);
@@ -21,7 +22,8 @@ function listItems(catalog, event) {
 }
 
 export const Version = (props) => {
-  return <>{listItems(catalog.versions, 'select')}</>;
+  return <>{listItems(catalog.versions, 'select')}
+  </>;
 };
 
 export const Color = (props) => {
@@ -54,9 +56,8 @@ export const Equipment = (props) => {
   return (
     <>
       {catalog.equipments.map((category, key) => {
-        console.log('category', category);
         return [
-          <h4 key={key}>{category.desc}</h4>,
+          <span key={key} className="label">{category.desc}</span>,
           listItems(category.items.all, 'add'),
         ];
       })}
@@ -67,9 +68,8 @@ export const Accessories = (props) => {
   return (
     <>
       {catalog.accessories.map((category, key) => {
-        console.log('category', category);
         return [
-          <h4 key={key}>{category.desc}</h4>,
+          <span key={key} className="label">{category.desc}</span>,
           listItems(category.items.all, 'add'),
         ];
       })}

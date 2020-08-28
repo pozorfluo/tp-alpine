@@ -7,6 +7,7 @@
 .breadcrumb{
     background-color: var(--color-dark-trans);
     border-radius: 0;
+    height :var(--header-height);
     /* background-color: var(--bg-dark); */
 }
 .breadcrumb-item.active{
@@ -22,4 +23,8 @@ a:hover {
 
 img {
     margin: 0 2rem 0 0;
+}
+
+.logo {
+    height : calc(var(--header-height) / 2);
 }
