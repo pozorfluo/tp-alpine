@@ -22,6 +22,7 @@ export const ConfigSummary = (props) => {
   return (
     <>
     <p>step : {state.step ?? '...'}</p>
+    {/* <p>redirect : {state.redirect ?? '...'}</p> */}
     <hr />
     <ol>
       <li>version {listItems(selected.version)}</li>

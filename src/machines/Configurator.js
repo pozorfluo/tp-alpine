@@ -54,7 +54,17 @@ const configMachine = {
     },
     reset: {
       confirm() {
+        const sequencer = store.getState().settingSequencer;
+
         store.dispatch({ type: 'RESET_CONFIG' });
+        store.dispatch({
+          type: 'SET_STEP',
+          step: sequencer.next('color').value,
+        });
+        // store.dispatch({
+        //   type: 'REDIRECT',
+        //   to: '/version',
+        // });
         this._current = ['version'];
       },
       cancel() {

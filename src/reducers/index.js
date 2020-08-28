@@ -9,6 +9,7 @@ const initialState = {
     'equipment',
     'accessories',
   ]),
+  // redirect: null,
   config: {
     version: [],
     color: [],
@@ -45,6 +46,12 @@ function rootReducer(state = initialState, action) {
           accessories: [],
         },
       };
+    // case 'REDIRECT':
+    //   console.log('REDIRECT', action.to);
+    //   return {
+    //     ...state,
+    //     redirect : action.to,
+    //   };
     default:
       return state;
   }
