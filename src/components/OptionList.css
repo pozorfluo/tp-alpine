@@ -1,18 +1,22 @@
 .option-list {
+    background-color : var(--color-black);
   overflow-x: auto;
   overflow-y: hidden;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   height: var(--options-height);
-  /* padding-right: 30rem; */
+  position: fixed;
+  bottom: var(--footer-height);
+  width : 100vw;
 }
 .option-list button {
-  font-size: 1.25rem;
+  font-size: 1rem;
   background-color: var(--color-dark);
   border-color: var(--color-dark);
-  min-width: calc(var(--options-height)) !important;
-  height: var(--options-height);
+  min-width: calc(var(--options-height) * 1.5);
+  height: calc(var(--options-height) - 2rem);
+  margin-top : 1rem;
 }
 .option-list button:hover {
   background-color: var(--color-alpine);
@@ -21,3 +25,7 @@
 .option-list .label {
     margin:2rem;
 }
+/* .option-pad{
+    color: pink;
+    width : 20rem;
+} */

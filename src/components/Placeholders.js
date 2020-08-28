@@ -22,8 +22,7 @@ function listItems(catalog, event) {
 }
 
 export const Version = (props) => {
-  return <>{listItems(catalog.versions, 'select')}
-  </>;
+  return <>{listItems(catalog.versions, 'select')}</>;
 };
 
 export const Color = (props) => {
@@ -38,8 +37,8 @@ export const Rims = (props) => {
       {catalog.rims[version?.name]
         ? listItems(catalog.rims[version.name], 'select')
         : null}
-        </>
-  ); 
+    </>
+  );
 };
 export const Upholstery = (props) => {
   const version = useSelector((state) => state.config.version[0]);
@@ -55,9 +54,12 @@ export const Upholstery = (props) => {
 export const Equipment = (props) => {
   return (
     <>
+
       {catalog.equipments.map((category, key) => {
         return [
-          <span key={key} className="label">{category.desc}</span>,
+          <span key={key} className="label">
+            {category.desc}
+          </span>,
           listItems(category.items.all, 'add'),
         ];
       })}
@@ -69,7 +71,9 @@ export const Accessories = (props) => {
     <>
       {catalog.accessories.map((category, key) => {
         return [
-          <span key={key} className="label">{category.desc}</span>,
+          <span key={key} className="label">
+            {category.desc}
+          </span>,
           listItems(category.items.all, 'add'),
         ];
       })}
