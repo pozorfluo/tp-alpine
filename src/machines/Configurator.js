@@ -61,7 +61,7 @@ const configMachine = {
       /**
        *
        */
-      next(items) {
+      next() {
         const context = store.getState();
         store.dispatch({
           type: 'SET_STEP',
