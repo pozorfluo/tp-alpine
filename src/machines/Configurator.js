@@ -1,10 +1,15 @@
 import store from '../store';
+
 /**
- * Define possible states, transitions, handlers, helpers.
+ * Define this machine possible states, transitions, event handlers, helpers.
  *
  * @note Business state and context for guards are handled with redux store.
+ * @todo Make a class/prototype out of configMachine API + constructor taking
+ *       a statechart-like object as machine definition and a store as injected 
+ *       dependency.
  */
 const configMachine = {
+  /** Internal cursor */
   _current: ['version'],
   //---------------------------------------------------------- machine rules ---
   states: {
@@ -23,11 +28,10 @@ const configMachine = {
        */
       next() {
         const context = store.getState();
-        const sequencer = context.settingSequencer;
         if (context.config.version.length) {
           store.dispatch({
             type: 'SET_STEP',
-            step: sequencer.next('color').value,
+            step: context.settingSequencer.next('color').value,
           });
           this._current = ['settings'];
         }
@@ -59,8 +63,10 @@ const configMachine = {
        */
       next(items) {
         const context = store.getState();
-        const sequencer = context.settingSequencer;
-        store.dispatch({ type: 'SET_STEP', step: sequencer.next().value });
+        store.dispatch({
+          type: 'SET_STEP',
+          step: context.settingSequencer.next().value,
+        });
 
         if (this.isConfigDone(context.config)) {
           this._current = ['summary'];
@@ -71,11 +77,10 @@ const configMachine = {
        */
       nav(path) {
         const context = store.getState();
-        const sequencer = context.settingSequencer;
         if (path !== context.step) {
           store.dispatch({
             type: 'SET_STEP',
-            step: sequencer.next(path).value,
+            step: context.settingSequencer.next(path).value,
           });
           this._current = ['settings'];
         }
@@ -98,7 +103,7 @@ const configMachine = {
        *
        */
       submit() {
-        /** Send config by email. */
+        /** @todo Send config by email. */
         this._current = ['done'];
       },
       /**
@@ -137,26 +142,10 @@ const configMachine = {
       },
     },
   },
-  //-------------------------------------------------------------------- API ---
-  send(event, ...payload) {
-    const depth = this._current.length;
-    let state = this.states[this._current[0]];
-    for (let i = 1; i < depth; i++) {
-      state = state.states[this._current[i]];
-    }
-    if (state) {
-      const handler = state[event];
-
-      if (handler) {
-        handler.apply(configMachine, payload);
-      }
-    }
-    console.log('machine state : ', this._current);
-  },
-  getState() {
-    return this._current;
-  },
-
+  //-------------------------------------------------------- machine helpers ---
+  /**
+   *
+   */
   isConfigDone(config) {
     let isDone = false;
     if (config === Object(config)) {
@@ -167,22 +156,33 @@ const configMachine = {
     }
     return isDone;
   },
+  //-------------------------------------------------------------------- API ---
+  /**
+   * Execute action associated with given event if the latter exists in current
+   * machine state, passing along given payload as action argument.
+   */
+  send(event, ...payload) {
+    const depth = this._current.length;
+    let state = this.states[this._current[0]];
+
+    for (let i = 1; i < depth; i++) {
+      state = state.states[this._current[i]];
+    }
+
+    if (state) {
+      const handler = state[event];
+      if (handler) {
+        handler.apply(configMachine, payload);
+      }
+    }
+    console.log('machine state : ', this._current);
+  },
+  /**
+   * Return a copy of this machine internal cursor.
+   */
+  getState() {
+    return [...this._current];
+  },
 };
 
 export default configMachine;
-
-// /**
-//  * Transition to settings edition at given setting screen for selected
-//  * version if any.
-//  */
-// nav(path) {
-//   const context = store.getState();
-//   if (context.config.version.length && path !== context.step) {
-//     context.settingSequencer.next(path);
-//     store.dispatch({
-//       type: 'SET_STEP',
-//       step: path,
-//     });
-//     this._current = ['settings'];
-//   }
-// },

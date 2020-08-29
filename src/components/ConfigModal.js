@@ -11,7 +11,7 @@ export const ConfigModal = (props) => {
   function handleOk() {
     props.onOk();
     console.log(props.redirect);
-    if(props.redirect) {
+    if (props.redirect) {
       history.push(props.redirect);
     }
   }
@@ -37,7 +37,6 @@ export const ConfigModal = (props) => {
           <NextButton variant="primary" onClick={handleOk}>
             {props.ok}
           </NextButton>
-
         </Modal.Footer>
       </div>
     </Modal>

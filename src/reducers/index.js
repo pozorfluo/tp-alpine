@@ -1,5 +1,3 @@
-// import routes from '../config/routes';
-
 const initialState = {
   step: 'version',
   settingSequencer: stepSequencer([
@@ -10,7 +8,6 @@ const initialState = {
     'accessories',
     'summary',
   ]),
-  // redirect: null,
   config: {
     version: [],
     color: [],
@@ -19,7 +16,6 @@ const initialState = {
     equipment: [],
     accessories: [],
   },
-  // steps: routes,
 };
 
 function rootReducer(state = initialState, action) {
@@ -47,12 +43,6 @@ function rootReducer(state = initialState, action) {
           accessories: [],
         },
       };
-    // case 'REDIRECT':
-    //   console.log('REDIRECT', action.to);
-    //   return {
-    //     ...state,
-    //     redirect : action.to,
-    //   };
     default:
       return state;
   }
@@ -66,7 +56,7 @@ function rootReducer(state = initialState, action) {
  *   i.e.: generator.next('stepValue');
  *
  * @todo Consider making 'previous' a reserved keyword used to go backward.
- * @todo Explore what exactly happens on dispatch with generators stored in the 
+ * @todo Explore what exactly happens on dispatch with generators stored in the
  *       state.
  */
 function* stepSequencer(steps) {

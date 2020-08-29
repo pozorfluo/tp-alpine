@@ -1,5 +1,3 @@
-// import ConfigModal from './ConfigModal';
-
 export { Breadcrumbs } from './Breadcrumbs';
 export { ConfigEmailForm } from './ConfigEmailForm';
 export { ConfigModal } from './ConfigModal';

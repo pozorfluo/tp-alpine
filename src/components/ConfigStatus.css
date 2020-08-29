@@ -1,5 +1,5 @@
 .status {
-    color: var(--color-alpine);
+  color: var(--color-alpine);
   line-height: var(--footer-height);
   font-weight: 700;
   margin: 0 32px;
@@ -7,46 +7,3 @@
   border: 0;
   font-size: 2rem;
 }
-/* .configStatus{
-    background-color : var(--color-white);
-    flex : 1;
-    color: var(--alpine);
-}
-
-.selectionName {
-    font-size: 3rem;
-    color: var(--alpine);
-    font-style: italic;
-    margin: 0 0 0 32px;
-    padding: 0;
-    border: 0;
-    font-family: "alpineAscensionWeb, sans-serif";
-    line-height: 1.45;
-    direction: ltr;
-}
-
-.selectionPrice{
-    transform: skew(-18deg);
-    font-size: 1rem;
-    margin: 16px 0 32px 16px;
-    padding-left: 8px;
-    border-left: 1px solid var(--alpine);
-    padding: 0;
-    font-family: "alpineAscensionWeb, sans-serif";
-    line-height: 1.45;
-    direction: ltr;
-}
-
-.selectionPriceValue{
-    margin-left: 4px;
-    display: block;
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    color: var(--alpine);
-    font-family: "alpineAscensionWeb, sans-serif";
-    line-height: 1.45;
-    direction: ltr;
-} */

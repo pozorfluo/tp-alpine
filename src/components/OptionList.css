@@ -1,5 +1,5 @@
 .option-list {
-    background-color : var(--color-black);
+  background-color: var(--color-black);
   overflow-x: auto;
   overflow-y: hidden;
   display: flex;
@@ -8,7 +8,7 @@
   height: var(--options-height);
   position: fixed;
   bottom: var(--footer-height);
-  width : 100vw;
+  width: 100vw;
 }
 .option-list button {
   font-size: 1rem;
@@ -16,14 +16,14 @@
   border-color: var(--color-dark);
   min-width: calc(var(--options-height) * 1.5);
   height: calc(var(--options-height) - 2rem);
-  margin-top : 1rem;
+  margin-top: 1rem;
 }
 .option-list button:hover {
   background-color: var(--color-alpine);
 }
 
 .option-list .label {
-    margin:2rem;
+  margin: 2rem;
 }
 /* .option-pad{
     color: pink;

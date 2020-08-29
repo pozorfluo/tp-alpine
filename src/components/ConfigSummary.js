@@ -21,17 +21,15 @@ export const ConfigSummary = (props) => {
   const selected = state.config;
   return (
     <div className="config-summary">
-    {/* <p>step : {state.step ?? '...'}</p> */}
-    {/* <hr /> */}
-    <ol >
-      <li>version {listItems(selected.version)}</li>
-      <li>color {listItems(selected.color)}</li>
-      <li>rims {listItems(selected.rims)}</li>
-      <li>upholstery {listItems(selected.upholstery)}</li>
-      <li>equipment {listItems(selected.equipment)}</li>
-      <li>accessories : {listItems(selected.accessories)}</li>
-    </ol>
-    {props.children}
+      <ol>
+        <li>version {listItems(selected.version)}</li>
+        <li>color {listItems(selected.color)}</li>
+        <li>rims {listItems(selected.rims)}</li>
+        <li>upholstery {listItems(selected.upholstery)}</li>
+        <li>equipment {listItems(selected.equipment)}</li>
+        <li>accessories : {listItems(selected.accessories)}</li>
+      </ol>
+      {props.children}
     </div>
   );
 };

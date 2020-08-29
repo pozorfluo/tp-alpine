@@ -3,9 +3,7 @@ import './OptionMenu.css';
 
 export const OptionMenu = (props) => {
   return (
-    <div
-      className="buttonMenuOptionContainer d-flex justify-content-start"
-    >
+    <div className="buttonMenuOptionContainer d-flex justify-content-start">
       <button type="button" className="btn btn-outline-primary">
         <div className="buttonContent">
           <img

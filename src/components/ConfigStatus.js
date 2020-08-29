@@ -18,8 +18,6 @@ export const ConfigStatus = (props) => {
   }
 
   return (
-    // <div className="configStatus d-flex bd-d-flex align-items-start flex-column bd-highlight mb-3">
-    // </div>
-      <div className="status">MODÈLE CONFIGURÉ : {sumConfig(selected)}€</div>
+    <div className="status">MODÈLE CONFIGURÉ : {sumConfig(selected)}€</div>
   );
 };

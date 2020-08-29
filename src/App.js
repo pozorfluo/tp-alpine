@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-// import { useSelector } from 'react-redux';
 import configMachine from './machines/Configurator';
 import {
   NextButton,
@@ -11,9 +10,7 @@ import {
 } from './components';
 
 function App() {
-  // const step = useSelector((state) => state.step);
   const [cancelShow, setCancelShow] = useState(false);
-  // if (step === 'reset') {setCancelShow(true);}
 
   return (
     <div className="App">

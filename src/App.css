@@ -6,7 +6,7 @@
   --color-dark: #848484;
   --color-black: #101011;
   --color-light-trans: #f4f4f47f;
-  --color-dark-trans : #1010117f;
+  --color-dark-trans: #1010117f;
   --txt-dark: var(--color-black);
   --txt-light: var(--color-white);
   --bg-dark: var(--color-alpine);
@@ -18,29 +18,28 @@
   --preview-height: calc(80vh - var(--footer-height) - var(--options-height));
 }
 * {
-    box-sizing: border-box
-} 
+  box-sizing: border-box;
+}
 body {
-    background : var(--bg-light);
-    overflow-x: hidden;
+  background: var(--bg-light);
+  overflow-x: hidden;
 }
 
 footer {
-    /* background : var(--bg-dark); */
-    height: var(--footer-height);
+  /* background : var(--bg-dark); */
+  height: var(--footer-height);
 }
 .App {
   text-align: center;
 }
-
 
 .App-link {
   color: var(--color-alpine);
 }
 
 .skew {
-    transform: skew(-18deg);
+  transform: skew(-18deg);
 }
 .unskew {
-    transform: skew(18deg);
+  transform: skew(18deg);
 }
