@@ -3,9 +3,11 @@ import { NextButton, ConfigStatus } from './';
 import './Footer.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import configMachine from '../machines/Configurator';
+import {useConfigMachineEmit} from '../machines';
 
 export const Footer = (props) => {
+  const emit = useConfigMachineEmit();
+
   return (
     <footer className="fixed-bottom">
       <Row>
@@ -15,7 +17,7 @@ export const Footer = (props) => {
         <Col md="4">
           <NextButton
             onClick={() => {
-              configMachine.send('next');
+              emit('next');
             }}
           >
             suivant

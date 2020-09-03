@@ -10,12 +10,13 @@ import {
 import './Breadcrumbs.css';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import routes from '../config/routes';
-import configMachine from '../machines/Configurator';
+import { useConfigMachineEmit } from '../machines';
 import Logo from '../images/logo/logo-white.png';
 import { OptionList } from './';
 
 export const Breadcrumbs = (props) => {
   const step = useSelector((state) => state.step);
+  const emit = useConfigMachineEmit();
 
   return (
     <Router>
@@ -23,14 +24,14 @@ export const Breadcrumbs = (props) => {
         <img src={Logo} alt="alpine logo" className="logo" />
 
         {routes.map(({ path, event, name }, key) => {
-          const to = path.substring(1);
+          const target = path.substring(1);
           return (
             <Breadcrumb.Item
               key={key}
               onClick={() => {
-                configMachine.send(event, to);
+                emit(event, target);
               }}
-              active={step === to}
+              active={step === target}
             >
               {name}
             </Breadcrumb.Item>
@@ -40,7 +41,7 @@ export const Breadcrumbs = (props) => {
       {props.children}
       <Redirect to={step} />
       <OptionList>
-        <Loc />
+        <Loc emit={emit}/>
         <Switch>
           {routes.map(({ path, Component }, key) => {
             return (
@@ -62,11 +63,12 @@ export const Breadcrumbs = (props) => {
 
 const Loc = (props) => {
   let history = useHistory();
+  const emit = props.emit;
   useEffect(() => {
     return history.listen((location) => {
-      configMachine.send('nav', location.pathname.substring(1));
-      // console.log('nav', location.pathname.substring(1));
+      emit('nav', location.pathname.substring(1));
+      console.log('nav', location.pathname.substring(1));
     });
-  }, [history]);
+  }, [history, emit]);
   return null;
 };

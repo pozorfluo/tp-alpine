@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import configMachine from './machines/Configurator';
+import {useConfigMachineEmit} from './machines';
 import {
   NextButton,
   Footer,
@@ -11,6 +11,7 @@ import {
 
 function App() {
   const [cancelShow, setCancelShow] = useState(false);
+  const emit = useConfigMachineEmit();
 
   return (
     <div className="App">
@@ -21,11 +22,11 @@ function App() {
           cancel="ANNULER"
           ok="RECOMMENCER"
           onHide={() => {
-            configMachine.send('cancel');
+            emit('cancel');
             setCancelShow(false);
           }}
           onOk={() => {
-            configMachine.send('confirm');
+            emit('confirm');
             setCancelShow(false);
           }}
           redirect="/version"
@@ -36,7 +37,7 @@ function App() {
         <ConfigSummary>
           <NextButton
             onClick={() => {
-              configMachine.send('reset');
+              emit('reset');
               setCancelShow(true);
             }}
           >

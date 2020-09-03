@@ -8,7 +8,7 @@ import store from '../store';
  *       a statechart-like object as machine definition and a store as injected 
  *       dependency.
  */
-const configMachine = {
+export const configMachine = {
   /** Internal cursor */
   _current: ['version'],
   //---------------------------------------------------------- machine rules ---
@@ -161,7 +161,7 @@ const configMachine = {
    * Execute action associated with given event if the latter exists in current
    * machine state, passing along given payload as action argument.
    */
-  send(event, ...payload) {
+  emit(event, ...payload) {
     const depth = this._current.length;
     let state = this.states[this._current[0]];
 
@@ -185,4 +185,10 @@ const configMachine = {
   },
 };
 
-export default configMachine;
+/**
+ * Define a react hook to access configMachine emit method.
+ */
+export const useConfigMachineEmit = function () {
+  return configMachine.emit.bind(configMachine);
+}
+
